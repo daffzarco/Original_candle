@@ -1,0 +1,375 @@
+/* -- CSS RESET --*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 1px solid beige;
+}
+
+/* HAMBURGER NAVIGATION */
+
+#navbar {
+  position: relative;
+  z-index:9999;
+}
+
+.pulldown{
+  margin: 20px 20px;
+  width: 38px;
+}
+
+/* Styles for our pulldown menus */
+.pulldown{
+  position: relative;
+}
+
+.pulldown .pulldown-toggle{
+  cursor: pointer;
+}
+
+.pulldown .pulldown-toggle-round{
+  height: 38px;
+  width: 38px;
+  border: 1px solid black;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: none;
+}
+
+.pulldown .pulldown-toggle-round:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: all 200ms;
+}
+
+.pulldown .pulldown-menu{
+  position: absolute;
+  top: 46px;
+  left: 0px;
+  width: 150px;
+  border-radius: 4px;
+  display: none;
+  z-index: 10;
+}
+
+.pulldown-right .pulldown-menu{
+  left: auto;
+  right: 0px;
+}
+
+.pulldown-toggle.open + .pulldown-menu{
+  display: block;
+  -webkit-animation-name: openPullDown;
+  animation-name: openPullDown;
+  -webkit-animation-duration: 100ms;
+  animation-duration: 100ms;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-transform-origin: left top;
+  transform-origin: left top;
+}
+
+.pulldown-right .pulldown-toggle.open + .pulldown-menu{
+  -webkit-transform-origin: right top;
+  transform-origin: right top;
+}
+
+.pulldown-menu ul{
+  list-style: none;
+  padding: 0;
+  margin: 4px 0;
+}
+
+.pulldown-menu ul li{
+  padding: 0;
+  margin: 0;
+}
+
+.pulldown-menu ul li a{
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 100;
+  display: block;
+  height: 35px;
+  padding: 0 7px;
+  line-height: 34px;
+  color: black;
+  text-decoration: none;
+}
+
+.pulldown-menu ul li a:hover{
+  border-left: 1px solid black;
+  padding: 0 6px;
+}
+
+/* line icon animation thanks to @SaraSoueidan - https://sarasoueidan.com/blog/navicon-transformicons/
+*/
+.pulldown-toggle-round{
+  position: relative;
+}
+
+.pulldown-toggle-round .lines{
+  position: absolute;
+  top: 18px;
+  left: 8px;
+  display: inline-block;
+  width: 20px;
+  height: 2px;
+  background: black;
+  border-radius: 1px;
+  transition: all 200ms;
+}
+
+.pulldown-toggle-round .lines::before{
+  position: absolute;
+  top: -6px;
+  right: -1px;
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 2px;
+  background: black;
+  border-radius: 1px;
+  transform-origin: 50% 50%;
+  transition: all 200ms;
+}
+
+.pulldown-toggle-round .lines::after{
+  position: absolute;
+  top: 6px;
+  right: -1px;
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 2px;
+  background: black;
+  border-radius: 1px;
+  transform-origin: 50% 50%;
+  transition: all 200ms;
+}
+
+/* when open lines positions */
+.pulldown-toggle-round.open .lines{
+  background: transparent;
+}
+
+.pulldown-toggle-round.open .lines::before{
+  top: 0px;
+  transform: rotate3d(0, 0, 1, 45deg);
+  -webkit-transform: rotate3d(0, 0, 1, 45deg);
+}
+
+.pulldown-toggle-round.open .lines::after{
+  top: 0px;
+  transform: rotate3d(0, 0, 1, -45deg);
+  -webkit-transform: rotate3d(0, 0, 1, -45deg);
+}
+
+@media (max-width: 550px) {
+  .pulldown .pulldown-menu{
+    position: fixed;
+    top: auto!important;
+    left: 0px!important;
+    right: 0px!important;
+    bottom: 0px!important;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .2);
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .pulldown-toggle.open + .pulldown-menu{
+    -webkit-animation-name: openPullDownMobile;
+    animation-name: openPullDownMobile;
+    -webkit-animation-duration: 200ms;
+    animation-duration: 200ms;
+  }
+
+  .pulldown-menu ul{
+    margin: 10px;
+  }
+
+  .pulldown-menu ul li a{
+    display: block;
+    height: 60px;
+    padding: 0 10px;
+    line-height: 60px;
+    cursor: pointer;
+    color: $primaryText;
+    text-decoration: none;
+  }
+
+  .pulldown .pulldown-menu li{
+    background-color: #fff;
+    margin-bottom: 1px;
+  }
+}
+
+/* Grow from origin */
+@-webkit-keyframes openPullDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(.7);
+    transform: scale(.7);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes openPullDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(.7);
+    -ms-transform: scale(.7);
+    transform: scale(.7);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+/* Slide up from bottom */
+@-webkit-keyframes openPullDownMobile {
+  0% {
+    -webkit-transform: translate(0%, 100%);
+    transform: translate(0%, 100%);
+  }
+
+  100% {
+    -webkit-transform: translate(0%, 0%);
+    transform: translate(0%, 0%);
+  }
+}
+
+@keyframes openPullDownMobile {
+  0% {
+    -webkit-transform: translate(0%, 100%);
+    -ms-transform: translate(0%, 100%);
+    transform: translate(0%, 100%);
+  }
+
+  100% {
+    -webkit-transform: translate(0%, 0%);
+    -ms-transform: translate(0%, 0%);
+    transform: translate(0%, 0%);
+  }
+}
+
+/* -- GENERAL STYLES --*/
+
+.header {
+  border-bottom: 1px solid lightgrey;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Montserrat', sans-serif;
+  margin: 5% 0 2.5%;
+  text-decoration: underline;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: 2.3rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+
+body {
+  font-size: 1.1rem;
+  font-family: 'Cardo', serif;
+  line-height: 1.6rem;
+}
+
+a {
+  color: black;
+}
+
+li {
+  padding: 10px;
+}
+
+.center {
+  text-align: center;
+}
+
+.text-middle {
+  width: 50%;
+  margin: 2% 25%;
+}
+
+#owl-demo .item{
+  margin: 3px;
+}
+#owl-demo .item img{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* -- BACKGROUND IMAGES --*/
+
+#featured-item {
+  background-image: url('../soycandle.jpg');
+  width: 100%;
+  min-height: 45vw;
+  display: block;
+  background-size: cover;
+  background-position: center;
+}
+
+/* -- FEATURED ITEM --*/
+
+.featured-title {
+  position: absolute;
+  top: 40%;
+  left: 4%;
+}
+
+.featured-text {
+  width: 70%;
+  padding: 30px 0px 0 20%;
+}
+
+.outer-wrap {
+  padding: 80px 100px;
+  margin: 0 auto;
+  border-bottom: 1px solid lightgrey;
+}
+
+.inner-wrap {
+  position: relative;
+  padding: 0 0 0 20%;
+}
+
+/*-- FOOTER --*/
+.footer-padding {
+  padding-left: 7%;
+}
+
+.address {
+  font-size: medium;
+  text-decoration: underline;
+}
+
+.footer-links {
+  display: inline-flex;
+}
+
+.bottom-footer-padding {
+  padding-left: 6%;
+}
+
+.bottom {
+  border-top: 1px solid lightgrey;
+  font-size: 0.8rem;
+}
