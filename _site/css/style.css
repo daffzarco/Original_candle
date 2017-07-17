@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  border: 1px solid beige;
+  border: 1px solid transparent;
 }
 
 /* HAMBURGER NAVIGATION */
@@ -281,6 +281,14 @@ h1 {
 
 h2 {
   font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.8rem;
+}
+
+h4 {
+  font-size: 1.5rem;
 }
 
 
