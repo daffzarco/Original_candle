@@ -30,6 +30,7 @@
 .pulldown .pulldown-toggle-round{
   height: 38px;
   width: 38px;
+  left: 90px;
   border: 1px solid black;
   border-radius: 50%;
   cursor: pointer;
@@ -44,7 +45,7 @@
 .pulldown .pulldown-menu{
   position: absolute;
   top: 46px;
-  left: 0px;
+  left: 120px;
   width: 150px;
   border-radius: 4px;
   display: none;
